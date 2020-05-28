@@ -7,21 +7,27 @@
  */
 
 import React from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import {StyleSheet, View, Text, FlatList} from 'react-native';
 import {useState} from 'react';
 import Header from './components/header';
 
 export default function App() {
-  const [item, setItem] = useState([
-    {text: 'lehem', key: '1'},
-    {text: 'milk', key: '2'},
-    {text: 'ice cream', key: '3'},
+  const [purItem, setPurItem] = useState([
+    {text: 'Lehem', key: '1'},
+    {text: 'Milk', key: '2'},
+    {text: 'Ice cream', key: '3'},
   ]);
 
   return (
     <View style={styles.container}>
       <Header />
-      <View style={styles.body} />
+      <View style={styles.body}>
+        <FlatList
+          data={purItem}
+          renderItem={({item}) => <Text>{item.text}</Text>}
+          // keyExtractor={myItem => myItem.id}
+        />
+      </View>
     </View>
   );
 }
